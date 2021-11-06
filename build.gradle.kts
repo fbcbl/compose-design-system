@@ -17,6 +17,7 @@ buildscript {
     dependencies {
         classpath(libs.android.gradle)
         classpath(libs.kotlin.gradle)
+        classpath(libs.shot)
     }
 }
 
@@ -39,7 +40,7 @@ fun configureBaseExtension(extension: BaseExtension): Unit =
             versionCode = 1
             versionName = "1.0"
 
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
             vectorDrawables.useSupportLibrary = true
         }
 

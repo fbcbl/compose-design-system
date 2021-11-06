@@ -7,6 +7,8 @@ androidx-core = '1.7.0'
 androidx-lifecycle = '2.3.1'
 kotlin = '1.5.31'
 material = '1.4.0'
+shot = '5.11.2'
+test-parameter-injector = "1.4"
 
 [libraries]
 android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle" }
@@ -18,12 +20,16 @@ androidx-compose-material-icons-core = { group = "androidx.compose.material", na
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidx-compose" }
 androidx-compose-material-main = { group = "androidx.compose.material", name = "material", version.ref = "androidx-compose" }
 androidx-compose-ui-main = { group = "androidx.compose.ui", name = "ui", version.ref = "androidx-compose" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "androidx-compose" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "androidx-compose" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "androidx-compose" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util", version.ref = "androidx-compose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 kotlin-gradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+shot = { group = "com.karumi", name = "shot", version.ref = "shot" }
+testParameterInjector = { group = "com.google.testparameterinjector", name = "test-parameter-injector", version.ref = "test-parameter-injector" }
 
 [bundles]
 androidx-compose = [

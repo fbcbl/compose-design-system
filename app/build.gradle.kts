@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("shot")
 }
 
 android {
@@ -36,10 +37,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.material)
 
-    testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${libs.versions.androidx.compose.get()}")
-    debugImplementation("androidx.compose.ui:ui-tooling:${libs.versions.androidx.compose.get()}")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.testParameterInjector)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    testImplementation("junit:junit:4.+")
 }
 
