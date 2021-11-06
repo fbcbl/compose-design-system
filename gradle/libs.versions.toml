@@ -1,0 +1,34 @@
+[versions]
+android-gradle = '7.0.3'
+androidx-activity = '1.3.1'
+androidx-appcompat = '1.3.1'
+androidx-compose = '1.0.4'
+androidx-core = '1.7.0'
+androidx-lifecycle = '2.3.1'
+kotlin = '1.5.31'
+material = '1.4.0'
+
+[libraries]
+android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
+androidx-compose-foundation-core = { group = "androidx.compose.foundation", name = "foundation", version.ref = "androidx-compose" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "androidx-compose" }
+androidx-compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core", version.ref = "androidx-compose" }
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidx-compose" }
+androidx-compose-material-main = { group = "androidx.compose.material", name = "material", version.ref = "androidx-compose" }
+androidx-compose-ui-main = { group = "androidx.compose.ui", name = "ui", version.ref = "androidx-compose" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "androidx-compose" }
+androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util", version.ref = "androidx-compose" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+kotlin-gradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+[bundles]
+androidx-compose = [
+    "androidx-compose-foundation-core",
+    "androidx-compose-foundation-layout",
+    "androidx-compose-ui-main",
+    "androidx-compose-ui-tooling"
+]
