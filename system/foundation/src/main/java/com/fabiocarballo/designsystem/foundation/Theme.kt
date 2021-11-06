@@ -1,12 +1,12 @@
 package com.fabiocarballo.designsystem.foundation
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import com.fabiocarballo.designsystem.foundation.text.LocalContentColor
 
 @Composable
 fun Theme(
@@ -17,8 +17,13 @@ fun Theme(
 
     CompositionLocalProvider(
         LocalColors provides colors,
+        LocalContentColor provides colors.contentPrimary,
         LocalTypography provides Typography()
     ) {
+        /**
+         * We are temporarily piggy-backing on Material. With time we will have
+         * less and less dependencies - as the design system gets more mature.
+         */
         MaterialTheme(
             colors = MaterialTheme.colors.copy(
                 primary = LocalColors.current.accent,
@@ -28,7 +33,7 @@ fun Theme(
             )
         ) {
             CompositionLocalProvider(
-                LocalContentColor provides LocalColors.current.contentPrimary
+                androidx.compose.material.LocalContentColor provides LocalColors.current.contentPrimary
             ) {
                 ProvideTextStyle(
                     LocalTypography.current.paragraph,
