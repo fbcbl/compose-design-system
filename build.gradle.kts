@@ -1,3 +1,5 @@
+import com.android.build.gradle.BaseExtension
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
 
@@ -17,6 +19,40 @@ buildscript {
         classpath(libs.kotlin.gradle)
     }
 }
+
+
+subprojects {
+    afterEvaluate {
+        extensions.findByType(BaseExtension::class)?.let {
+            configureBaseExtension(it)
+        }
+    }
+}
+
+fun configureBaseExtension(extension: BaseExtension): Unit =
+    with(extension) {
+        compileSdkVersion(31)
+
+        defaultConfig {
+            minSdk = 21
+            targetSdk = 31
+            versionCode = 1
+            versionName = "1.0"
+
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            vectorDrawables.useSupportLibrary = true
+        }
+
+        packagingOptions {
+            resources.excludes.add("META-INF/{AL2.0,LGPL2.1}")
+        }
+
+        buildFeatures.compose = true
+
+        composeOptions {
+            kotlinCompilerExtensionVersion = libs.versions.androidx.compose.get()
+        }
+    }
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)

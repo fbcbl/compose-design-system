@@ -4,40 +4,26 @@ plugins {
 }
 
 android {
-    compileSdk = 31
-
     defaultConfig {
         applicationId = "com.fabiocarballo.designsystem"
-        minSdk = 21
-        targetSdk = 31
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidx.compose.get()
-    }
-
-    packagingOptions {
-        resources.excludes.add("META-INF/{AL2.0,LGPL2.1}")
     }
 }
 
 dependencies {
+    // internal
+    implementation(projects.system.foundation)
+
+    // third party
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)

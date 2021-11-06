@@ -6,7 +6,9 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 enableFeaturePreview("VERSION_CATALOGS")
 
 include(":app")
+include(":system:foundation")
