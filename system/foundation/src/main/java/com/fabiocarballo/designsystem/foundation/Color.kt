@@ -6,18 +6,22 @@ import androidx.compose.ui.graphics.Color
 
 @Immutable
 data class Colors internal constructor(
-    val primaryA: Color = GrayPalette.black,
-    val primaryB: Color = GrayPalette.white,
-    val accent: Color = BluePalette.blue400,
-    val negative: Color = RedPalette.red400,
-    val warning: Color = YellowPalette.yellow400,
-    val positive: Color = GreenPalette.green400,
-    val backgroundPrimary: Color = primaryB,
-    val backgroundSecondary: Color = GrayPalette.gray50,
-    val backgroundTertiary: Color = GrayPalette.gray100,
-    val contentPrimary: Color = primaryA,
-    val contentSecondary: Color = GrayPalette.gray600,
-    val contentTertiary: Color = GrayPalette.gray500
+    val primaryA: Color,
+    val primaryB: Color,
+    val accent: Color,
+    val negative: Color,
+    val warning: Color,
+    val positive: Color,
+    val backgroundPrimary: Color,
+    val backgroundInversePrimary: Color,
+    val backgroundSecondary: Color,
+    val backgroundTertiary: Color,
+    val backgroundDisabled: Color,
+    val contentPrimary: Color,
+    val contentInversePrimary: Color,
+    val contentSecondary: Color,
+    val contentTertiary: Color,
+    val contentDisabled: Color
 )
 
 fun lightColors(
@@ -28,11 +32,15 @@ fun lightColors(
     warning: Color = YellowPalette.yellow400,
     positive: Color = GreenPalette.green400,
     backgroundPrimary: Color = primaryB,
+    backgroundInversePrimary: Color = primaryA,
     backgroundSecondary: Color = GrayPalette.gray50,
     backgroundTertiary: Color = GrayPalette.gray100,
+    backgroundDisabled: Color = GrayPalette.gray50,
     contentPrimary: Color = primaryA,
+    contentInversePrimary: Color = primaryB,
     contentSecondary: Color = GrayPalette.gray600,
-    contentTertiary: Color = GrayPalette.gray500
+    contentTertiary: Color = GrayPalette.gray500,
+    contentDisabled: Color = GrayPalette.gray400
 ) = Colors(
     primaryA = primaryA,
     primaryB = primaryB,
@@ -41,11 +49,15 @@ fun lightColors(
     warning = warning,
     positive = positive,
     backgroundPrimary = backgroundPrimary,
+    backgroundInversePrimary = backgroundInversePrimary,
     backgroundSecondary = backgroundSecondary,
     backgroundTertiary = backgroundTertiary,
+    backgroundDisabled = backgroundDisabled,
     contentPrimary = contentPrimary,
+    contentInversePrimary = contentInversePrimary,
     contentSecondary = contentSecondary,
-    contentTertiary = contentTertiary
+    contentTertiary = contentTertiary,
+    contentDisabled = contentDisabled
 )
 
 fun darkColors(
@@ -56,11 +68,15 @@ fun darkColors(
     warning: Color = YellowPalette.yellow500,
     positive: Color = GreenPalette.green500,
     backgroundPrimary: Color = primaryB,
+    backgroundInversePrimary: Color = primaryA,
     backgroundSecondary: Color = GrayPalette.gray800,
     backgroundTertiary: Color = GrayPalette.gray700,
+    backgroundDisabled: Color = GrayPalette.gray800,
     contentPrimary: Color = primaryA,
+    contentInversePrimary: Color = primaryB,
     contentSecondary: Color = GrayPalette.gray400,
-    contentTertiary: Color = GrayPalette.gray500
+    contentTertiary: Color = GrayPalette.gray500,
+    contentDisabled: Color = GrayPalette.gray600
 ) = Colors(
     primaryA = primaryA,
     primaryB = primaryB,
@@ -69,11 +85,15 @@ fun darkColors(
     warning = warning,
     positive = positive,
     backgroundPrimary = backgroundPrimary,
+    backgroundInversePrimary = backgroundInversePrimary,
     backgroundSecondary = backgroundSecondary,
     backgroundTertiary = backgroundTertiary,
+    backgroundDisabled = backgroundDisabled,
     contentPrimary = contentPrimary,
+    contentInversePrimary = contentInversePrimary,
     contentSecondary = contentSecondary,
-    contentTertiary = contentTertiary
+    contentTertiary = contentTertiary,
+    contentDisabled = contentDisabled
 )
 
 private object GrayPalette {

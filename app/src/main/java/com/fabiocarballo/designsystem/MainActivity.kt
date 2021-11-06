@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.fabiocarballo.designsystem.components.Button
 import com.fabiocarballo.designsystem.foundation.Theme
 import com.fabiocarballo.designsystem.foundation.text.Text
 
@@ -43,10 +44,12 @@ class MainActivity : ComponentActivity() {
                     Greeting("Android", style = Theme.typography.label)
 
                     Spacer(modifier = Modifier.weight(1f))
-                    Text(
-                        text = "Toggle UI mode",
-                        modifier = Modifier.clickable { isDarkMode = !isDarkMode }
-                    )
+                    Button(
+                        onClick = { isDarkMode = !isDarkMode }
+                    ) {
+                        Text(text = "Toggle UI mode")
+                    }
+
                 }
             }
         }

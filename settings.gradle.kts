@@ -12,3 +12,4 @@ enableFeaturePreview("VERSION_CATALOGS")
 
 include(":app")
 include(":system:foundation")
+include(":system:components")

@@ -23,6 +23,7 @@ android {
 dependencies {
     // internal
     implementation(projects.system.foundation)
+    implementation(projects.system.components)
 
     // third party
     debugImplementation(libs.androidx.compose.ui.tooling)
