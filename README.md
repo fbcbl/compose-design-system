@@ -1,4 +1,4 @@
-# Design System with Compose
+# [WIP] Sample Design System
 
 This project aims to hold an example of how to implement a design system with Jetpack Compose.
 
