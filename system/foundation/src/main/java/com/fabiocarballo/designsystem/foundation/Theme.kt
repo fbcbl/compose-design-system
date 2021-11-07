@@ -17,6 +17,7 @@ fun Theme(
 
     CompositionLocalProvider(
         LocalColors provides colors,
+        LocalSizing provides Sizing(),
         LocalContentColor provides colors.contentPrimary,
         LocalTypography provides Typography()
     ) {
@@ -36,7 +37,7 @@ fun Theme(
                 androidx.compose.material.LocalContentColor provides LocalColors.current.contentPrimary
             ) {
                 ProvideTextStyle(
-                    LocalTypography.current.paragraph,
+                    LocalTypography.current.paragraphLarge,
                     content = content
                 )
             }
@@ -56,4 +57,9 @@ object Theme {
         @Composable
         @ReadOnlyComposable
         get() = LocalColors.current
+
+    val sizing: Sizing
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSizing.current
 }

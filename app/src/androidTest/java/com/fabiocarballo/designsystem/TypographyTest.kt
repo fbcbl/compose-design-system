@@ -17,17 +17,17 @@ class TypographyTest : DesignSystemScreenshotTest() {
 
     @Test
     fun display() = runScreenshotTest {
-        TestDummy(text = "This is a display.", style = Theme.typography.display)
+        TestDummy(text = "This is a display.", style = Theme.typography.displayLarge)
     }
 
     @Test
     fun paragraph() = runScreenshotTest {
-        TestDummy(text = "This is a paragraph.", style = Theme.typography.paragraph)
+        TestDummy(text = "This is a paragraph.", style = Theme.typography.paragraphLarge)
     }
 
     @Test
     fun label() = runScreenshotTest {
-        TestDummy(text = "This is a label.", style = Theme.typography.label)
+        TestDummy(text = "This is a label.", style = Theme.typography.labelMedium)
     }
 
     @Composable
