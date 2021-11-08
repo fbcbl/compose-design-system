@@ -1,14 +1,13 @@
 package com.fabiocarballo.designsystem.internal
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.fabiocarballo.designsystem.foundation.Theme
 import com.google.testing.junit.testparameterinjector.TestParameter
 import com.google.testing.junit.testparameterinjector.TestParameterInjector
 import com.karumi.shot.ScreenshotTest
 import org.junit.Rule
-import org.junit.Test
+import org.junit.rules.TestName
 import org.junit.runner.RunWith
 
 /**
@@ -35,6 +34,9 @@ abstract class DesignSystemScreenshotTest : ScreenshotTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
+    @get:Rule
+    val testName = TestName()
+
     @TestParameter
     private lateinit var themeMode: ThemeMode
 
@@ -49,7 +51,7 @@ abstract class DesignSystemScreenshotTest : ScreenshotTest {
             )
         }
 
-        val name = "${extractClassAndMethodName()}_${themeMode.name.lowercase()}"
+        val name = "${testName.methodName}_${themeMode.name.lowercase()}"
 
         compareScreenshot(
             rule = composeTestRule,
@@ -58,25 +60,4 @@ abstract class DesignSystemScreenshotTest : ScreenshotTest {
     }
 
     private enum class ThemeMode { LIGHT, DARK }
-}
-
-private fun extractClassAndMethodName(): String {
-    val stack = Throwable().stackTrace
-
-    stack.forEach { element ->
-        try {
-            val clazz = Class.forName(element.className)
-            val method = clazz.getMethod(element.methodName)
-
-            if (method.annotations.any { it.annotationClass == Test::class }) {
-                return "${clazz.canonicalName}_${method.name}"
-            }
-        } catch (ignored: NoSuchMethodException) {
-            // do nothing
-        } catch (ignored: ClassNotFoundException) {
-            // do nothing
-        }
-    }
-
-    error("Couldn't parse the name")
 }
