@@ -21,7 +21,8 @@ data class Colors internal constructor(
     val contentInversePrimary: Color,
     val contentSecondary: Color,
     val contentTertiary: Color,
-    val contentDisabled: Color
+    val contentDisabled: Color,
+    val borderOpaque: Color
 )
 
 fun lightColors(
@@ -40,7 +41,8 @@ fun lightColors(
     contentInversePrimary: Color = primaryB,
     contentSecondary: Color = GrayPalette.gray600,
     contentTertiary: Color = GrayPalette.gray500,
-    contentDisabled: Color = GrayPalette.gray400
+    contentDisabled: Color = GrayPalette.gray400,
+    borderOpaque: Color = GrayPalette.gray200
 ) = Colors(
     primaryA = primaryA,
     primaryB = primaryB,
@@ -57,7 +59,8 @@ fun lightColors(
     contentInversePrimary = contentInversePrimary,
     contentSecondary = contentSecondary,
     contentTertiary = contentTertiary,
-    contentDisabled = contentDisabled
+    contentDisabled = contentDisabled,
+    borderOpaque = borderOpaque
 )
 
 fun darkColors(
@@ -76,7 +79,8 @@ fun darkColors(
     contentInversePrimary: Color = primaryB,
     contentSecondary: Color = GrayPalette.gray400,
     contentTertiary: Color = GrayPalette.gray500,
-    contentDisabled: Color = GrayPalette.gray600
+    contentDisabled: Color = GrayPalette.gray600,
+    borderOpaque: Color = GrayPalette.gray700
 ) = Colors(
     primaryA = primaryA,
     primaryB = primaryB,
@@ -93,7 +97,8 @@ fun darkColors(
     contentInversePrimary = contentInversePrimary,
     contentSecondary = contentSecondary,
     contentTertiary = contentTertiary,
-    contentDisabled = contentDisabled
+    contentDisabled = contentDisabled,
+    borderOpaque = borderOpaque
 )
 
 private object GrayPalette {

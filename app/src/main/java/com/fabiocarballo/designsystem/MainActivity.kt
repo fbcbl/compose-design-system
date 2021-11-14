@@ -5,10 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -19,13 +22,21 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fabiocarballo.designsystem.components.buttons.PrimaryButton
 import com.fabiocarballo.designsystem.components.buttons.SecondaryButton
+import com.fabiocarballo.designsystem.components.buttons.TertiaryButton
+import com.fabiocarballo.designsystem.components.buttons.TertiaryIconButton
+import com.fabiocarballo.designsystem.components.cards.Card
+import com.fabiocarballo.designsystem.components.headers.Header
+import com.fabiocarballo.designsystem.components.list.item.CompactListItem
+import com.fabiocarballo.designsystem.components.list.item.ListItemTitle
 import com.fabiocarballo.designsystem.foundation.Theme
 import com.fabiocarballo.designsystem.foundation.text.Text
 import com.fabiocarballo.designsystem.screens.ButtonsScreen
+import com.fabiocarballo.designsystem.screens.CardsScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +47,11 @@ class MainActivity : ComponentActivity() {
             var screen: Screen by remember { mutableStateOf(Screen.HOME) }
             val shouldHandleBack by remember(screen) { derivedStateOf { screen != Screen.HOME } }
 
+            val goToHome = { screen = Screen.HOME }
+
             BackHandler(
                 enabled = shouldHandleBack,
-                onBack = { screen = Screen.HOME }
+                onBack = goToHome
             )
 
             Theme(
@@ -56,9 +69,8 @@ class MainActivity : ComponentActivity() {
                                 onScreenSelected = { screen = it }
                             )
                         }
-                        Screen.BUTTONS -> {
-                            ButtonsScreen()
-                        }
+                        Screen.BUTTONS -> ButtonsScreen(onBackClick = goToHome)
+                        Screen.CARDS -> CardsScreen(onBackClick = goToHome)
                     }
                 }
             }
@@ -75,32 +87,30 @@ fun HomeScreen(
     Column(
         Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(vertical = Theme.sizing.scale300)
     ) {
-        Text("Glossary", style = Theme.typography.displayMedium)
+        Header(
+            title = { Text(text = "Glossary") },
+            actions = {
+                TertiaryIconButton(
+                    onClick = onToggleUiClick,
+                    painter = painterResource(id = R.drawable.ic_sun_moon)
+                )
+            }
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        SecondaryButton(
-            onClick = { onScreenSelected(Screen.BUTTONS) }
-        ) {
-            Text(text = "Buttons")
-        }
-
-        Spacer(modifier = Modifier.weight(1f))
-
-
-        PrimaryButton(onClick = onToggleUiClick) {
-            Text(text = "Toggle UI mode")
-        }
-
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    Theme {
-        Text("Androiders")
+        Screen.values()
+            .filter { it != Screen.HOME }
+            .forEach { screen ->
+                CompactListItem(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onScreenSelected(screen) }
+                ) {
+                    ListItemTitle(label = screen.label)
+                }
+            }
     }
 }

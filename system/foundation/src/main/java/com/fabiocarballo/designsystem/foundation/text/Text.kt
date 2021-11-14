@@ -2,6 +2,7 @@ package com.fabiocarballo.designsystem.foundation.text
 
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
@@ -14,7 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 fun Text(
     text: String,
     modifier: Modifier = Modifier,
-    style: TextStyle = TextStyle.Default,
+    style: TextStyle = LocalTextStyle.current,
     color: Color = Color.Unspecified,
     textAlign: TextAlign? = null
 ) {

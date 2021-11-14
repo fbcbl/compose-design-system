@@ -10,102 +10,121 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import com.fabiocarballo.designsystem.R
 import com.fabiocarballo.designsystem.components.buttons.PrimaryButton
 import com.fabiocarballo.designsystem.components.buttons.SecondaryButton
 import com.fabiocarballo.designsystem.components.buttons.TertiaryButton
+import com.fabiocarballo.designsystem.components.buttons.TertiaryIconButton
 import com.fabiocarballo.designsystem.components.buttons.internal.ButtonDefaults
+import com.fabiocarballo.designsystem.components.headers.Header
+import com.fabiocarballo.designsystem.components.icons.Icon
 import com.fabiocarballo.designsystem.foundation.Theme
 import com.fabiocarballo.designsystem.foundation.text.Text
 
 @Composable
-fun ButtonsScreen() {
+fun ButtonsScreen(
+    onBackClick: () -> Unit
+) {
 
     val context = LocalContext.current
     val onClick = { Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show() }
 
-    Column(
-        Modifier.verticalScroll(rememberScrollState())
-    ) {
-        val modifier = Modifier.padding(
-            horizontal = Theme.sizing.scale600,
-            vertical = Theme.sizing.scale300
+    Column {
+        Header(
+            navigationIcon = {
+                TertiaryIconButton(
+                    onClick = onBackClick,
+                    painter = painterResource(id = R.drawable.ic_arrow_left)
+                )
+            },
+            title = { Text(text = "Buttons", style = Theme.typography.labelLarge) }
         )
 
-        ButtonsSection(
-            name = "Primary Buttons",
-            modifier = modifier
+        Column(
+            Modifier.verticalScroll(rememberScrollState())
         ) {
-            PrimaryButton(
-                onClick = onClick,
-                modifier = Modifier.fillMaxWidth()
+            val modifier = Modifier.padding(
+                horizontal = Theme.sizing.scale600,
+                vertical = Theme.sizing.scale300
+            )
+
+            ButtonsSection(
+                name = "Primary Buttons",
+                modifier = modifier
             ) {
-                Text(text = "Large Primary Button")
+                PrimaryButton(
+                    onClick = onClick,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "Large Primary Button")
+                }
+
+                PrimaryButton(
+                    onClick = onClick,
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = false
+                ) {
+                    Text(text = "Disabled Large Primary Button")
+                }
             }
 
-            PrimaryButton(
-                onClick = onClick,
-                modifier = Modifier.fillMaxWidth(),
-                enabled = false
+            ButtonsSection(
+                name = "Secondary Buttons",
+                modifier = modifier
             ) {
-                Text(text = "Disabled Large Primary Button")
-            }
-        }
+                SecondaryButton(
+                    onClick = onClick,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "Medium Secondary Button")
+                }
 
-        ButtonsSection(
-            name = "Secondary Buttons",
-            modifier = modifier
-        ) {
-            SecondaryButton(
-                onClick = onClick,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Medium Secondary Button")
-            }
+                SecondaryButton(
+                    onClick = onClick,
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = false
+                ) {
+                    Text(text = "Disabled Medium Secondary Button")
+                }
 
-            SecondaryButton(
-                onClick = onClick,
-                modifier = Modifier.fillMaxWidth(),
-                enabled = false
-            ) {
-                Text(text = "Disabled Medium Secondary Button")
-            }
-
-            SecondaryButton(
-                onClick = onClick,
-                contentPadding = ButtonDefaults.smallButtonContentPadding(),
-                textStyle = ButtonDefaults.smallButtonTextStyle(),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Small Secondary Button")
-            }
-        }
-
-        ButtonsSection(
-            name = "Tertiary Buttons",
-            modifier = modifier
-        ) {
-            TertiaryButton(
-                onClick = onClick,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Medium Tertiary Button")
+                SecondaryButton(
+                    onClick = onClick,
+                    contentPadding = ButtonDefaults.smallButtonContentPadding(),
+                    textStyle = ButtonDefaults.smallButtonTextStyle(),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "Small Secondary Button")
+                }
             }
 
-            TertiaryButton(
-                onClick = onClick,
-                modifier = Modifier.fillMaxWidth(),
-                enabled = false
+            ButtonsSection(
+                name = "Tertiary Buttons",
+                modifier = modifier
             ) {
-                Text(text = "Disabled Medium Tertiary Button")
-            }
+                TertiaryButton(
+                    onClick = onClick,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "Medium Tertiary Button")
+                }
 
-            TertiaryButton(
-                onClick = onClick,
-                contentPadding = ButtonDefaults.smallButtonContentPadding(),
-                textStyle = ButtonDefaults.smallButtonTextStyle(),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Small Tertiary Button")
+                TertiaryButton(
+                    onClick = onClick,
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = false
+                ) {
+                    Text(text = "Disabled Medium Tertiary Button")
+                }
+
+                TertiaryButton(
+                    onClick = onClick,
+                    contentPadding = ButtonDefaults.smallButtonContentPadding(),
+                    textStyle = ButtonDefaults.smallButtonTextStyle(),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "Small Tertiary Button")
+                }
             }
         }
     }
