@@ -10,6 +10,7 @@ dependencyResolutionManagement {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 enableFeaturePreview("VERSION_CATALOGS")
 
-include(":app")
-include(":system:foundation")
-include(":system:components")
+include(":design:app")
+include(":design:components")
+include(":design:foundation")
+include(":taxi")

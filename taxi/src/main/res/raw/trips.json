@@ -1,0 +1,18 @@
+{
+  "trips": [
+    {
+      "id": "Aklca9migd",
+      "type": "completed",
+      "amount": 9.90,
+      "currency": "EUR",
+      "created_at": "2020-12-09T09:16:56.000124Z",
+      "car_model": "Toyota Auris",
+      "rating": 4
+    },
+    {
+      "id": "0M6a9tH4CT",
+      "type": "cancelled",
+      "created_at": "2021-12-09T09:16:50.000124Z"
+    }
+  ]
+}

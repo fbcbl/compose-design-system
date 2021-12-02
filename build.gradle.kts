@@ -18,6 +18,7 @@ buildscript {
         classpath(libs.android.gradle)
         classpath(libs.kotlin.gradle)
         classpath(libs.shot)
+        classpath("org.jetbrains.kotlin:kotlin-serialization:${libs.versions.kotlin.get()}")
     }
 }
 

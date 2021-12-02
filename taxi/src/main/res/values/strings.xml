@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Taxi</string>
+
+    <string name="welcome_placeholder_move_safely">Move with care</string>
+    <string name="welcome_action_start">Get Started</string>
+
+    <string name="trips_title">Your trips</string>
+    <string name="trip_cancelled">Cancelled</string>
+</resources>
